@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::prefix('api')->group(function(){
+//    Route::get('shops',function(){
+//
+//    });
+//});
+Route::prefix('api')->group(function(){
+    Route::get('shops','ShopsController@index');
+    Route::get('shop','ShopsController@shop');
+    Route::get('shop','ShopsController@loginCheck');
+});
