@@ -23,5 +23,11 @@ Route::get('/', function () {
 Route::prefix('api')->group(function(){
     Route::get('shops','ShopsController@index');
     Route::get('shop','ShopsController@shop');
-    Route::get('shop','ShopsController@loginCheck');
+    Route::get('sms','ShopsController@sms');//短信
+    Route::post('regist','ShopsController@regist');//注册
+    Route::post('login','ShopsController@login');//登录
 });
+
+
+
+
