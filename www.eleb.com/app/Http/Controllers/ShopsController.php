@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 use Mockery\Exception;
 
@@ -110,8 +111,7 @@ class ShopsController extends Controller
         //返回数据
         return json_encode($Shops);
     }
-
-    //发送短信
+    //发送验证码短信
     public function sms(Request $request)
     {
         $tel = $request->tel;
@@ -183,8 +183,6 @@ class ShopsController extends Controller
         // fixme 可选: 设置模板参数, 假如模板中存在变量需要替换则为必填项
         $params['TemplateParam'] = Array(
             "code" => random_int(1111, 9999)
-//            "code" => $tel,
-//            "product" => "阿里通信"
         );
 
         // fixme 可选: 设置发送短信流水号
@@ -199,21 +197,21 @@ class ShopsController extends Controller
         }
         //-----------------//
         // 初始化SignatureHelper实例用于设置参数，签名以及发送请求
-//        $helper = new SignatureHelper();
-//
-//        // 此处可能会抛出异常，注意catch
-//        $content = $helper->request(
-//            $accessKeyId,
-//            $accessKeySecret,
-//            "dysmsapi.aliyuncs.com",
-//            array_merge($params, array(
-//                "RegionId" => "cn-hangzhou",
-//                "Action" => "SendSms",
-//                "Version" => "2017-05-25",
-//            ))
-//        // fixme 选填: 启用https
-//        // ,true
-//        );
+        $helper = new SignatureHelper();
+
+        // 此处可能会抛出异常，注意catch
+        $content = $helper->request(
+            $accessKeyId,
+            $accessKeySecret,
+            "dysmsapi.aliyuncs.com",
+            array_merge($params, array(
+                "RegionId" => "cn-hangzhou",
+                "Action" => "SendSms",
+                "Version" => "2017-05-25",
+            ))
+        // fixme 选填: 启用https
+        // ,true
+        );
         //-----------------//
 
         //保存验证码到缓存中
@@ -224,17 +222,18 @@ class ShopsController extends Controller
         Redis::set('code', $codes);
         Redis::expire('code', 300);
 
-        if (!empty($content)) {
-            $result = [
-                "status" => "false",
-                "message" => "获取短信验证码失败"
-            ];
-        } else {
-            $result = [
-                "status" => "true",
-                "message" => "获取短信验证码成功"
-            ];
-        }
+//        if (!empty($content)) {
+//            $result = [
+//                "status" => "false",
+//                "message" => "获取短信验证码失败"
+//            ];
+//        } else {
+//
+//        }
+        $result = [
+            "status" => "true",
+            "message" => "获取短信验证码成功"
+        ];
 //      dd($content);
         return json_encode($result);
     }
@@ -510,6 +509,7 @@ class ShopsController extends Controller
     //添加订单接口
     public function addorder(Request $request)
     {
+//        DB::table('carts')->truncate();
         DB::beginTransaction();
         try{
             $address_id = $request->address_id;//地址id,根据地址id查询获取地址信息
@@ -566,12 +566,65 @@ class ShopsController extends Controller
             }
             DB::commit();
             //清空购物车
-            DB::table('carts')->truncate();
+//            DB::table('carts')->truncate();
             $result = [
                 "status" => "true",
                 "message" => "添加成功",
                 "order_id" => $order->id,
             ];
+            $shop = Shop::where('id',$order->shop_id)->first();//获取商家名
+//            return json_encode($order->tel);
+            $params = array();
+            // *** 需用户填写部分 ***
+            // fixme 必填: 请参阅 https://ak-console.aliyun.com/ 取得您的AK信息
+            $accessKeyId = "LTAIfhptcWxBzIYt";
+            $accessKeySecret = "S4FxaWQ4wvY9hoP7jwdID4e9iDA2E0";
+
+            // fixme 必填: 短信接收号码
+            $params["PhoneNumbers"] = $order->tel;
+
+            $params["SignName"] = "陈盼";
+
+            $params["TemplateCode"] = "SMS_140722123";
+
+            // fixme 可选: 设置模板参数, 假如模板中存在变量需要替换则为必填项
+            $params['TemplateParam'] = Array(
+                "name" =>$shop->shop_name
+            );
+            // fixme 可选: 设置发送短信流水号
+            $params['OutId'] = "12345";
+
+            // fixme 可选: 上行短信扩展码, 扩展码字段控制在7位或以下，无特殊需求用户请忽略此字段
+            $params['SmsUpExtendCode'] = "1234567";
+
+            // *** 需用户填写部分结束, 以下代码若无必要无需更改 ***
+            if (!empty($params["TemplateParam"]) && is_array($params["TemplateParam"])) {
+                $params["TemplateParam"] = json_encode($params["TemplateParam"], JSON_UNESCAPED_UNICODE);
+            }
+//-----------------//
+            // 初始化SignatureHelper实例用于设置参数，签名以及发送请求
+            $helper = new SignatureHelper();
+
+            // 此处可能会抛出异常，注意catch
+            $content = $helper->request(
+                $accessKeyId,
+                $accessKeySecret,
+                "dysmsapi.aliyuncs.com",
+                array_merge($params, array(
+                    "RegionId" => "cn-hangzhou",
+                    "Action" => "SendSms",
+                    "Version" => "2017-05-25",
+                ))
+            // fixme 选填: 启用https
+            // ,true
+            );
+            //-----------------//
+            Mail::raw('执行正常',function($message){
+                $message->subject('食而不语');
+                $message->to(['13658010910@163.com']);
+                $message->from('13658010910@163.com','13658010910');
+
+            });
             return json_encode($result);
         }catch (Exception $e){
             DB::rollback();//事务回滚
