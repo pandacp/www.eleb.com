@@ -9,6 +9,7 @@ use App\Models\Menu_category;
 use App\Models\Order;
 use App\Models\Order_good;
 use App\Models\Shop;
+use App\Models\User;
 use App\Models\Yh;
 use App\SignatureHelper;
 use Illuminate\Http\Request;
@@ -509,6 +510,7 @@ class ShopsController extends Controller
     //添加订单接口
     public function addorder(Request $request)
     {
+
 //        DB::table('carts')->truncate();
         DB::beginTransaction();
         try{
@@ -619,9 +621,12 @@ class ShopsController extends Controller
             // ,true
             );
             //-----------------//
-            Mail::raw('执行正常',function($message){
+            //下单成功发送邮件通知店家
+            $user = User::where('shop_id',$order->shop_id)->first();
+            $_SERVER['email']= $user->email;
+            Mail::raw('有新订单产生',function($message){
                 $message->subject('食而不语');
-                $message->to(['13658010910@163.com']);
+                $message->to(["{$_SERVER['email']}"]);
                 $message->from('13658010910@163.com','13658010910');
 
             });
@@ -678,7 +683,7 @@ class ShopsController extends Controller
     //获得订单列表接口
     public function orderList()
     {
-        $orders = Order::where('user_id',1)->get();//根据当前用户查询订单
+        $orders = Order::where('user_id',Auth::user()->id)->get();//根据当前用户查询订单
         $lists =[];
         foreach ($orders as $order){
             $shop = Shop::where('id',$order->shop_id)->first();//商店信息
