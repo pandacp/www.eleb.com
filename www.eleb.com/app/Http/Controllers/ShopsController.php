@@ -677,7 +677,8 @@ class ShopsController extends Controller
                 $goods_list['goods_price']=$menu['goods_price'];
         }
         $orders['goods_list']=$carts;
-
+        //清空购物车
+        DB::table('carts')->truncate();
         return json_encode($orders);
     }
     //获得订单列表接口
