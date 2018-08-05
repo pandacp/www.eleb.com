@@ -180,10 +180,10 @@ class ShopsController extends Controller
 
         // fixme 必填: 短信模板Code，应严格按"模板CODE"填写, 请参考: https://dysms.console.aliyun.com/dysms.htm#/develop/template
         $params["TemplateCode"] = "SMS_140505052";
-
+        $tel = substr($tel, 10, 2);
         // fixme 可选: 设置模板参数, 假如模板中存在变量需要替换则为必填项
         $params['TemplateParam'] = Array(
-            "code" => random_int(1111, 9999)
+            "code" => $tel.random_int(1111, 9999)
         );
 
         // fixme 可选: 设置发送短信流水号
@@ -216,10 +216,8 @@ class ShopsController extends Controller
         //-----------------//
 
         //保存验证码到缓存中
-        $code = substr($params['TemplateParam'], -5, 2);
-        $tel = substr($params["PhoneNumbers"], 8, 3);
-        $codes = $tel . $code;
-
+        $codes = substr($params['TemplateParam'],-7,5);
+//        return json_encode($tel);
         Redis::set('code', $codes);
         Redis::expire('code', 300);
 

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1a3db3cc-8b79-41be-9671-fb4220827270" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www.eleb.com/app/Http/Controllers/ShopsController.php" afterPath="$PROJECT_DIR$/www.eleb.com/app/Http/Controllers/ShopsController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,31 +48,31 @@
       <file leaf-file-name="ShopsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www.eleb.com/app/Http/Controllers/ShopsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2611">
-              <caret line="100" column="50" lean-forward="true" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
+            <state relative-caret-position="442">
+              <caret line="220" column="35" lean-forward="true" selection-start-line="220" selection-start-column="35" selection-end-line="220" selection-end-column="35" />
               <folding>
                 <element signature="e#40#63#0#PHP" expanded="true" />
                 <element signature="e#568#1181#0#PHP" expanded="false" />
-                <element signature="e#3698#7898#0#PHP" expanded="false" />
+                <element signature="e#1200#3679#0#PHP" expanded="false" />
                 <element signature="e#3772#3795#0#PHP" expanded="false" />
-                <element signature="e#7541#7574#0#PHP" expanded="false" />
-                <element signature="e#7913#9104#0#PHP" expanded="false" />
-                <element signature="e#9119#10413#0#PHP" expanded="false" />
-                <element signature="e#10432#11128#0#PHP" expanded="false" />
-                <element signature="e#11147#12438#0#PHP" expanded="false" />
-                <element signature="e#11232#11460#0#PHP" expanded="false" />
-                <element signature="e#12457#13020#0#PHP" expanded="false" />
-                <element signature="e#13039#14420#0#PHP" expanded="false" />
-                <element signature="e#13126#13354#0#PHP" expanded="false" />
-                <element signature="e#14440#14957#0#PHP" expanded="false" />
-                <element signature="e#14979#15858#0#PHP" expanded="false" />
-                <element signature="e#15877#21021#0#PHP" expanded="false" />
-                <element signature="e#21042#22403#0#PHP" expanded="false" />
-                <element signature="e#22423#24051#0#PHP" expanded="false" />
-                <element signature="e#24069#24648#0#PHP" expanded="false" />
-                <element signature="e#24666#25764#0#PHP" expanded="false" />
-                <element signature="e#25504#25588#0#PHP" expanded="false" />
-                <element signature="e#25627#25710#0#PHP" expanded="false" />
+                <element signature="e#7530#7563#0#PHP" expanded="false" />
+                <element signature="e#7902#9093#0#PHP" expanded="false" />
+                <element signature="e#9108#10402#0#PHP" expanded="false" />
+                <element signature="e#10421#11117#0#PHP" expanded="false" />
+                <element signature="e#11136#12427#0#PHP" expanded="false" />
+                <element signature="e#11221#11449#0#PHP" expanded="false" />
+                <element signature="e#12446#13009#0#PHP" expanded="false" />
+                <element signature="e#13028#14409#0#PHP" expanded="false" />
+                <element signature="e#13115#13343#0#PHP" expanded="false" />
+                <element signature="e#14429#14946#0#PHP" expanded="false" />
+                <element signature="e#14968#15847#0#PHP" expanded="false" />
+                <element signature="e#15866#21010#0#PHP" expanded="false" />
+                <element signature="e#21031#22392#0#PHP" expanded="false" />
+                <element signature="e#22412#24040#0#PHP" expanded="false" />
+                <element signature="e#24058#24637#0#PHP" expanded="false" />
+                <element signature="e#24655#25753#0#PHP" expanded="false" />
+                <element signature="e#25493#25577#0#PHP" expanded="false" />
+                <element signature="e#25616#25699#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -162,7 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -327,13 +327,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../admin.eleb.com" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -465,17 +466,18 @@
       <workItem from="1533344375530" duration="645000" />
       <workItem from="1533353317237" duration="4656000" />
       <workItem from="1533367171465" duration="669000" />
+      <workItem from="1533432227884" duration="1110000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161354000" />
+    <option name="totallyTimeSpent" value="162464000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2247854" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22800429" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -782,31 +784,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www.eleb.com/app/Http/Controllers/ShopsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2611">
-          <caret line="100" column="50" lean-forward="true" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
+        <state relative-caret-position="442">
+          <caret line="220" column="35" lean-forward="true" selection-start-line="220" selection-start-column="35" selection-end-line="220" selection-end-column="35" />
           <folding>
             <element signature="e#40#63#0#PHP" expanded="true" />
             <element signature="e#568#1181#0#PHP" expanded="false" />
-            <element signature="e#3698#7898#0#PHP" expanded="false" />
+            <element signature="e#1200#3679#0#PHP" expanded="false" />
             <element signature="e#3772#3795#0#PHP" expanded="false" />
-            <element signature="e#7541#7574#0#PHP" expanded="false" />
-            <element signature="e#7913#9104#0#PHP" expanded="false" />
-            <element signature="e#9119#10413#0#PHP" expanded="false" />
-            <element signature="e#10432#11128#0#PHP" expanded="false" />
-            <element signature="e#11147#12438#0#PHP" expanded="false" />
-            <element signature="e#11232#11460#0#PHP" expanded="false" />
-            <element signature="e#12457#13020#0#PHP" expanded="false" />
-            <element signature="e#13039#14420#0#PHP" expanded="false" />
-            <element signature="e#13126#13354#0#PHP" expanded="false" />
-            <element signature="e#14440#14957#0#PHP" expanded="false" />
-            <element signature="e#14979#15858#0#PHP" expanded="false" />
-            <element signature="e#15877#21021#0#PHP" expanded="false" />
-            <element signature="e#21042#22403#0#PHP" expanded="false" />
-            <element signature="e#22423#24051#0#PHP" expanded="false" />
-            <element signature="e#24069#24648#0#PHP" expanded="false" />
-            <element signature="e#24666#25764#0#PHP" expanded="false" />
-            <element signature="e#25504#25588#0#PHP" expanded="false" />
-            <element signature="e#25627#25710#0#PHP" expanded="false" />
+            <element signature="e#7530#7563#0#PHP" expanded="false" />
+            <element signature="e#7902#9093#0#PHP" expanded="false" />
+            <element signature="e#9108#10402#0#PHP" expanded="false" />
+            <element signature="e#10421#11117#0#PHP" expanded="false" />
+            <element signature="e#11136#12427#0#PHP" expanded="false" />
+            <element signature="e#11221#11449#0#PHP" expanded="false" />
+            <element signature="e#12446#13009#0#PHP" expanded="false" />
+            <element signature="e#13028#14409#0#PHP" expanded="false" />
+            <element signature="e#13115#13343#0#PHP" expanded="false" />
+            <element signature="e#14429#14946#0#PHP" expanded="false" />
+            <element signature="e#14968#15847#0#PHP" expanded="false" />
+            <element signature="e#15866#21010#0#PHP" expanded="false" />
+            <element signature="e#21031#22392#0#PHP" expanded="false" />
+            <element signature="e#22412#24040#0#PHP" expanded="false" />
+            <element signature="e#24058#24637#0#PHP" expanded="false" />
+            <element signature="e#24655#25753#0#PHP" expanded="false" />
+            <element signature="e#25493#25577#0#PHP" expanded="false" />
+            <element signature="e#25616#25699#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
