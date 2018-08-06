@@ -21,8 +21,8 @@ Route::get('/', function () {
 //    });
 //});
 Route::prefix('api')->group(function(){
-    Route::get('shops','ShopsController@index');
-    Route::get('shop','ShopsController@shop');
+    Route::get('shops','ShopsController@index');//商家列表
+    Route::get('shop','ShopsController@shop');//指定商家
     Route::get('sms','ShopsController@sms');//短信
     Route::post('regist','ShopsController@regist');//注册
     Route::post('login','ShopsController@login');//登录

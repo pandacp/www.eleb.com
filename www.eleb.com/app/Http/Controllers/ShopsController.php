@@ -31,6 +31,7 @@ class ShopsController extends Controller
             $Shops = Shop::where('shop_name', 'like', "%{$keyword}%")->get();
         } else {
             $Shops = Shop::all();
+
         }
         foreach ($Shops as &$shop) {
             $shop['distance'] = 500;
@@ -41,8 +42,17 @@ class ShopsController extends Controller
             unset($shop['created_at']);
             unset($shop['updated_at']);
         }
-
-        return json_encode($Shops);
+        //店铺列表和详情接口使用redis做缓存,减少数据库压力
+        //使用redis保存商店列表信息,减轻服务器压力
+        $result = Redis::get('shops');
+        if(empty($result)){
+            Redis::set('shops',$Shops);
+            $rs = Redis::get('shops');
+            return $rs;
+        }
+        $rs = Redis::get('shops');
+        return $rs;
+//        return json_encode($Shops);
     }
 
     //指定商家信息
@@ -107,10 +117,17 @@ class ShopsController extends Controller
 //            $Shops['commodity'] = [$menu_category];
         }
         $Shops['commodity'] = $menu_categories;
-
-
+        //判断,如果商家有数据更新,redis被清空,那么就需要重新获取redis数据
+        $result = Redis::get('shop');
+        if(empty($result)){
+            Redis::set('shop',$Shops);
+            $Shops = Redis::get('shop');
+            return $Shops;
+        }
+        $Shops = Redis::get('shop');
         //返回数据
-        return json_encode($Shops);
+//        return json_encode($Shops);
+        return $Shops;
     }
     //发送验证码短信
     public function sms(Request $request)
